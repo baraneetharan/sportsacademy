@@ -46,4 +46,4 @@ jobs:
        tags: ghcr.io/${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}latest
       env:
         DOCKER_BUILDKIT: 1
-        CONTAINER_REGISTRY_PASSWORD: ${{ secrets.SPORTSACADEMY }}
+        CONTAINER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_GHCR }}
