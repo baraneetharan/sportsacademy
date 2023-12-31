@@ -44,3 +44,10 @@ jobs:
        tags: ghcr.io/${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}sportsacademylatest
       env:
         DOCKER_BUILDKIT: 1
+    - name: Add image to Docker Hub
+      uses: docker/dockerfile-action@v2
+      with:
+        context: .
+        file: Dockerfile
+        tag: ${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}sportsacademylatest
+        push: true
