@@ -50,5 +50,5 @@ jobs:
       with:
         context: .
         file: Dockerfile
-        tag: ${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}sportsacademylatest
+        tags: ${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}:sportsacademy-latest
         push: true
