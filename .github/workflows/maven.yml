@@ -48,5 +48,5 @@ jobs:
     - name: Tag and Push Docker Image to Docker Hub
       run: |
         docker image tag ghcr.io/${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}sportsacademy-latest ${{ github.repository_owner }}/sportsacademy-latest:v1
-        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }} registry.hub.docker.com
+        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }} -stdin registry.hub.docker.com
         docker image push ${{ github.repository_owner }}/sportsacademy-latest:v1
