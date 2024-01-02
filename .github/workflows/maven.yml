@@ -47,6 +47,6 @@ jobs:
 # Add a new step to push the image to Docker Hub
     - name: Tag and Push Docker Image to Docker Hub
       run: |
-        docker image tag ghcr.io/${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}sportsacademycontainer USER/sportsacademycontainer:latest
+        docker image tag ghcr.io/${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}sportsacademy-latest:v1
         docker login
         docker image push ${{ github.repository_owner }}/sportsacademy-latest:v1
