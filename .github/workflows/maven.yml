@@ -50,5 +50,5 @@ jobs:
       with:
         context: .
         file: Dockerfile
-        tags: ghcr.io/${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}sportsacademy-latest
+        tags: ${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}sportsacademy-latest
         push: true
