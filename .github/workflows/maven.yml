@@ -24,11 +24,9 @@ jobs:
       with:
         name: sportsacademy-artifact
         path: target/
-    - name: SonarQube Integration
   sonarqube:
     name: SonarQube Integration
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v2
       with:
