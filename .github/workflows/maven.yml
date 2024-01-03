@@ -24,19 +24,16 @@ jobs:
       with:
         name: sportsacademy-artifact
         path: target/
-  sonarqube:
-    name: SonarQube Integration
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
+    - name: Run SonarQube analysis
+      id: sonar-analysis
+      uses: sonarqube/sonar-runner@v2
       with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} //Sonar Token generated 
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} example URL (https://sq.bswlog.co.in/)
+        properties: |
+          sonar.projectKey: sportsacademy
+          sonar.organization: baraneetharan
+          sonar.server: https://sonarcloud.io
+          sonar.token: ${{ secrets.SONAR_TOKEN }}
+          sonar.branch: main
 
           
   docker:
