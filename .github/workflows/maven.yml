@@ -24,6 +24,23 @@ jobs:
       with:
         name: sportsacademy-artifact
         path: target/          
+  
+  sonar:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 17
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven cloud
+      run:  mvn -B verify sonar:sonar -Dsonar.projectKey=javareachabilityy -Dsonar.organization=javareachabilityy -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN
+      env:
+        GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
+        SONARCLOUD_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        
   docker:
     runs-on: ubuntu-latest
     steps:
