@@ -24,7 +24,19 @@ jobs:
       with:
         name: sportsacademy-artifact
         path: target/
+    - name: Run SonarQube analysis
+      id: sonar-analysis
+      uses: sonarqube/sonar-runner@v2
+      with:
+       properties: |
+        sonar.projectKey=sportsacademy
+        sonar.organization=baraneetharan
+        sonar.server=https://sonarcloud.io
+        sonar.token=${{ secrets.SONAR_TOKEN }}
+        sonar.branch=mainwindow
+      # other properties
 
+          
   docker:
     runs-on: ubuntu-latest
     steps:
