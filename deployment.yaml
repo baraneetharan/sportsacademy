@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sportsacademy-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sportsacademy-app
+  template:
+    metadata:
+      labels:
+        app: sportsacademy-app
+    spec:
+      containers:
+      - name: sportsacademy-container
+        image: baraneetharan/sportsacademy-latest:v1
+        ports:
+        - containerPort: 80
