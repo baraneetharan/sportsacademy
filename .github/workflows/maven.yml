@@ -71,3 +71,14 @@ jobs:
         docker image tag ghcr.io/${{ github.repository_owner }}/${{ env.REPOSITORY_NAME }}sportsacademy-latest ${{ github.repository_owner }}/sportsacademy-latest:v1
         docker image push ${{ github.repository_owner }}/sportsacademy-latest:v1
 
+  kubernetes:
+    runs-on: ubuntu-latest
+    needs: docker
+    steps: 
+      - name: Deploy to Kubernetes
+        uses: kubectl/kubectl@v0.9.6
+        with:
+          command: apply -f deployment.yaml
+        env:
+          KUBECONFIG: ${{ secrets.KUBECONFIG }}
+             
